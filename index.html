@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gustavo de Castro — Turning data into experiences</title>
+    <meta
+      name="description"
+      content="Personal portfolio of Gustavo de Castro. Data analyst, data scientist and creative technologist. Work at the intersection of data, AI and interactive experiences — including Nullbane: The Query Keepers."
+    />
+    <meta name="theme-color" content="#07080c" id="themeColor" />
+    <meta property="og:title" content="Gustavo de Castro — Turning data into experiences" />
+    <meta
+      property="og:description"
+      content="A portfolio for work that sits between data, intelligence and play."
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("gs-theme");
+          var l = localStorage.getItem("gs-lang");
+          var theme = t || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          var lang = l && (l === "en" || l === "es" || l === "pt") ? l : "es";
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.lang = lang;
+        } catch (e) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#top" data-i18n="skip">Skip to content</a>
+
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__mark">GC</div>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+      <div class="loader__n" id="loaderN">00</div>
+    </div>
+
+    <canvas class="field" id="field" aria-hidden="true"></canvas>
+    <div class="deck" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+      <a class="nav__brand" href="#top">Gustavo de Castro</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="nav__tools">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+        </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false">
+          <span data-i18n="theme.toLight">Light</span>
+        </button>
+        <button class="nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="drawer" data-i18n="nav.menu">
+          Menu
+        </button>
+      </div>
+      <div class="nav__progress" aria-hidden="true"><i id="progress"></i></div>
+    </header>
+
+    <div class="drawer" id="drawer" hidden>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+      <a href="#journey" data-i18n="drawer.journey">Journey</a>
+      <a href="#study" data-i18n="drawer.study">Study</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <aside class="spine" aria-hidden="true">
+      <span id="spineLabel" data-i18n="spine.arrival">00 — Arrival</span>
+    </aside>
+
+    <main id="top">
+      <section class="hero" data-section="00 — Arrival" data-sec="arrival">
+        <div class="hero__coords" aria-hidden="true">
+          <span>40.4168° N</span>
+          <span>3.7038° W</span>
+          <span>Madrid</span>
+        </div>
+        <p class="hero__kicker reveal" data-i18n="hero.kicker">Portfolio</p>
+        <h1 class="hero__name">
+          <span class="hero__line" data-split>Gustavo</span>
+          <span class="hero__line" data-split>de Castro</span>
+        </h1>
+        <p class="hero__axes" data-i18n="hero.axes">Data × AI × Creativity</p>
+        <p class="hero__lead" data-i18n="hero.lead">
+          I build experiences where data becomes something you can see, understand
+          and interact with.
+        </p>
+        <div class="hero__meta">
+          <span data-i18n="hero.role1">Data Analyst</span>
+          <span data-i18n="hero.role2">Data Scientist</span>
+          <span data-i18n="hero.role3">AI Enthusiast</span>
+        </div>
+        <a class="scroll-hint" href="#about">
+          <span data-i18n="hero.scroll">Scroll to enter</span>
+          <i></i>
+        </a>
+      </section>
+
+      <section class="manifesto" id="about" data-section="01 — Seeing" data-sec="seeing">
+        <div class="manifesto__sticky">
+          <p class="eyebrow" data-i18n="manifesto.eyebrow">A way of seeing</p>
+          <h2 class="display" data-i18n="manifesto.title" data-i18n-html>
+            Data is more than numbers.<br />
+            <em>It is a way of looking at the world.</em>
+          </h2>
+          <p class="manifesto__body" data-i18n="manifesto.body">
+            I work where analytics meets intelligence, and where intelligence
+            becomes something a person can walk through. The path has been
+            consistent: start with the facts, then give them a form that can be
+            felt.
+          </p>
+        </div>
+      </section>
+
+      <section class="path" data-section="02 — Path" data-sec="path">
+        <ol class="path__list">
+          <li>
+            <span class="path__n">01</span>
+            <h3 data-i18n="path.t1">I started with data.</h3>
+            <p data-i18n="path.p1">Tables, events, campaigns, quality checks. The raw material.</p>
+          </li>
+          <li>
+            <span class="path__n">02</span>
+            <h3 data-i18n="path.t2">Then I learned to see it.</h3>
+            <p data-i18n="path.p2">Dashboards and models that make a question answerable.</p>
+          </li>
+          <li>
+            <span class="path__n">03</span>
+            <h3 data-i18n="path.t3">Then to decide with it.</h3>
+            <p data-i18n="path.p3">KPI stories for teams that need to move, not admire a chart.</p>
+          </li>
+          <li>
+            <span class="path__n">04</span>
+            <h3 data-i18n="path.t4">Then to predict with it.</h3>
+            <p data-i18n="path.p4">Statistics, features, forecasts — the next likely state.</p>
+          </li>
+          <li>
+            <span class="path__n">05</span>
+            <h3 data-i18n="path.t5">Then to build with it.</h3>
+            <p data-i18n="path.p5">Pipelines, warehouses, interfaces. Systems that stay honest.</p>
+          </li>
+          <li class="is-now">
+            <span class="path__n" data-i18n="path.now">Now</span>
+            <h3 data-i18n="path.t6">I combine data, AI and craft.</h3>
+            <p data-i18n="path.p6">Experiences you can query, play and remember.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="expertise" id="expertise" data-section="03 — Craft" data-sec="craft">
+        <div class="expertise__head">
+          <p class="eyebrow" data-i18n="expertise.eyebrow">Capabilities</p>
+          <h2 class="display" data-i18n="expertise.title">A practice, not a logo wall.</h2>
+        </div>
+        <div class="expertise__layout">
+          <div class="expertise__cats" role="tablist" aria-label="Expertise areas" data-i18n-aria="expertise.areas">
+            <button type="button" role="tab" aria-selected="true" data-cat="analytics">
+              <span>01</span> <b data-i18n="expertise.analytics">Data Analytics</b>
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-cat="science">
+              <span>02</span> <b data-i18n="expertise.science">Data Science</b>
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-cat="eng">
+              <span>03</span> <b data-i18n="expertise.eng">Data Engineering</b>
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-cat="ai">
+              <span>04</span> <b data-i18n="expertise.ai">AI</b>
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-cat="creative">
+              <span>05</span> <b data-i18n="expertise.creative">Creative Technology</b>
+            </button>
+          </div>
+          <div class="expertise__stage" id="skillStage" aria-live="polite">
+            <p class="expertise__blurb" id="skillBlurb">
+              Query, model, visualize. The daily grammar of turning a mess into a
+              decision.
+            </p>
+            <ul class="skill-cloud" id="skillCloud"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="work" id="work" data-section="04 — Work" data-sec="work">
+        <div class="work__intro">
+          <p class="eyebrow" data-i18n="work.eyebrow">Selected work</p>
+          <h2 class="display" data-i18n="work.title">Chapters, not cards.</h2>
+          <p class="lede" data-i18n="work.lede">
+            Three surfaces of the same practice: a game you can query, dashboards
+            you can read, and models you can reason with.
+          </p>
+        </div>
+      </section>
+
+      <section class="legend" id="legend" data-section="05 — Datania" data-sec="datania">
+        <div class="legend__veil" aria-hidden="true"></div>
+        <img
+          class="legend__art"
+          src="/media/datania-keep.jpg"
+          alt="Atmospheric view of a keep at night, inspired by the world of Datania."
+          data-i18n-alt="legend.art"
+          width="1800"
+          height="1012"
+        />
+        <div class="legend__copy">
+          <p class="eyebrow eyebrow--gold" data-i18n="legend.eyebrow">Hero case study</p>
+          <p class="legend__series" data-i18n="legend.series">The Legend of SQL</p>
+          <h2 class="legend__title" data-i18n="legend.title">Nullbane: The Query Keepers</h2>
+          <p class="legend__tag" data-i18n="legend.tag">Where learning SQL becomes an adventure.</p>
+          <div class="legend__grid">
+            <div>
+              <h3 data-i18n="legend.idea">The idea</h3>
+              <p data-i18n="legend.ideaBody">
+                Practice is where SQL actually lives — and practice is usually a
+                dry editor. Nullbane turns that practice into an RPG in the world
+                of Datania, where the antagonist is Null.
+              </p>
+            </div>
+            <div>
+              <h3 data-i18n="legend.concept">The concept</h3>
+              <p data-i18n="legend.conceptBody">
+                Players travel kingdoms, take quests, face enemies and write real
+                SQL against a live PostgreSQL database. The game is built for
+                people who already know the basics and want to get dangerous
+                with them — not a first lesson.
+              </p>
+            </div>
+            <div>
+              <h3 data-i18n="legend.holds">What it holds</h3>
+              <p data-i18n="legend.holdsBody">
+                One hundred levels, from beginner to expert. Three languages.
+                Verifiable certificates. Progress, identity and permissions live
+                in Supabase, with row-level security so each player only touches
+                their own path.
+              </p>
+            </div>
+            <div>
+              <h3 data-i18n="legend.craft">Craft</h3>
+              <p data-i18n="legend.craftBody">
+                SQL · PostgreSQL · Supabase · Game design · Educational
+                technology · Product storytelling. AI helped accelerate the
+                build. It did not invent the idea.
+              </p>
+            </div>
+          </div>
+          <a class="cta cta--gold" href="https://www.thelegendofsql.com/" target="_blank" rel="noreferrer">
+            <span data-i18n="legend.cta">Enter the game</span> <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="chapters" data-section="06 — Surfaces" data-sec="surfaces">
+        <article class="chapter">
+          <div class="chapter__media">
+            <img
+              src="/media/bi-constellation.jpg"
+              alt="Abstract layered visualization suggesting analytics planes and signal lines."
+              width="1800"
+              height="1012"
+              loading="lazy"
+            />
+          </div>
+          <div class="chapter__copy">
+            <p class="eyebrow" data-i18n="bi.eyebrow">02 / Analytics</p>
+            <h2 data-i18n="bi.title">Data &amp; BI</h2>
+            <p data-i18n="bi.body">
+              Interactive dashboards built around business questions: clean
+              models, DAX that scales, KPI stories that a stakeholder can finish
+              in one sitting. Six live reports — each one opens directly in
+              Power BI.
+            </p>
+            <ul class="chips">
+              <li>Power BI</li>
+              <li>Data modeling</li>
+              <li>DAX</li>
+              <li data-i18n="bi.chip4">KPI storytelling</li>
+            </ul>
+            <ol class="reports" id="reports">
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiZjBlMDk4YjAtYzc2Yy00MTcyLTgxZWMtMzQ5MzFkZWViMWZiIiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>01</span> <em data-i18n="bi.r1">Project Management</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiNzAzMGM3NTgtZGE0MS00ZDdkLTk0YjktY2FjNTU3NzEzMGVhIiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>02</span> <em data-i18n="bi.r2">Logistics</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiZjIzNzlhMWEtMTQ2My00NmE1LWFhN2MtNjFkODQ5MGYwZWI3IiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>03</span> <em data-i18n="bi.r3">Human Resources</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiNTc5NTIyZDMtYTNmZi00NzlhLTlhNTItMTliMGFhMzZmZWMwIiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>04</span> <em data-i18n="bi.r4">Sales</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiNzk1YTRmNTYtYjZjZi00NDRhLWE0M2MtMTBmMGE4Nzg0YzJhIiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>05</span> <em data-i18n="bi.r5">Formula 1</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+              <li>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiMmM4YjQ2MjctNzFlNS00NzY4LWJmNjgtYzAzNzA0YTAzZDNjIiwidCI6ImU3ODAyNzEwLThiNWMtNGJhZS04NzUxLTI0M2U1ZDljZGMwMSJ9" target="_blank" rel="noreferrer">
+                  <span>06</span> <em data-i18n="bi.r6">Netflix</em> <i aria-hidden="true">→</i>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="chapter chapter--flip">
+          <div class="chapter__media">
+            <img
+              src="/media/ai-lattice.jpg"
+              alt="Abstract luminous lattice suggesting models, agents and connected intelligence."
+              width="1800"
+              height="1012"
+              loading="lazy"
+            />
+          </div>
+          <div class="chapter__copy">
+            <p class="eyebrow" data-i18n="intel.eyebrow">03 / Intelligence</p>
+            <h2 data-i18n="intel.title">AI &amp; data science</h2>
+            <p data-i18n="intel.body">
+              Predictive work, generative systems, agents and retrieval — used
+              as instruments, not as decoration. Nullbane itself is proof of
+              that stance: AI as a way to ship a long-held idea faster, while
+              the design, the data model and the teaching remain human.
+            </p>
+            <ul class="chips">
+              <li data-i18n="intel.chip1">Machine learning</li>
+              <li data-i18n="intel.chip2">Forecasting</li>
+              <li>LLMs</li>
+              <li>RAG</li>
+              <li data-i18n="intel.chip5">Agents</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="journey" id="journey" data-section="07 — Years" data-sec="years">
+        <p class="eyebrow" data-i18n="journey.eyebrow">Journey</p>
+        <h2 class="display" data-i18n="journey.title">A long attention span.</h2>
+        <p class="lede" data-i18n="journey.lede">
+          Nearly two decades across quality, information systems and marketing
+          data — now Madrid, now the edge where analytics becomes product.
+        </p>
+        <ol class="years">
+          <li>
+            <time>2020</time>
+            <h3 data-i18n="journey.t1">Exactness at scale</h3>
+            <p data-i18n="journey.p1">Digital marketing quality for Google, at Accenture. Precision as a daily craft.</p>
+          </li>
+          <li>
+            <time>2022</time>
+            <h3 data-i18n="journey.t2">Information as a team</h3>
+            <p data-i18n="journey.p2">MIS leadership for Google, at Cognizant. Making reporting hold under pressure.</p>
+          </li>
+          <li>
+            <time>2024</time>
+            <h3 data-i18n="journey.t3">Marketing, made readable</h3>
+            <p data-i18n="journey.p3">Marketing data analysis for MasOrange, at Berocam. Stories a business can act on.</p>
+          </li>
+          <li>
+            <time>2026</time>
+            <h3 data-i18n="journey.t4">Build what you can enter</h3>
+            <p data-i18n="journey.p4">Data analyst at Lognext for MasOrange. Nullbane live. Data, AI and play in the same room.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="study" id="study" data-section="08 — Study" data-sec="study">
+        <p class="eyebrow" data-i18n="study.eyebrow">Formation</p>
+        <h2 class="display" data-i18n="study.title">How the looking was trained.</h2>
+        <p class="lede" data-i18n="study.lede">
+          Journalism first. Then marketing. Then analytics. Then intelligence.
+          The same attention, sharpened four times.
+        </p>
+        <ol class="study__list">
+          <li>
+            <time>2009</time>
+            <h3 data-i18n="study.d1">Journalism</h3>
+            <p>Universidade Bandeirantes de São Paulo</p>
+          </li>
+          <li>
+            <time>2020</time>
+            <h3 data-i18n="study.d2">Master in Digital Marketing</h3>
+            <p>EAE Business School</p>
+          </li>
+          <li>
+            <time>2022</time>
+            <h3 data-i18n="study.d3">Data Analytics</h3>
+            <p>National College of Ireland</p>
+          </li>
+          <li>
+            <time>2026</time>
+            <h3 data-i18n="study.d4">Master in Data Science, AI &amp; Big Data Analytics</h3>
+            <p>The Valley Business &amp; Tech School</p>
+          </li>
+        </ol>
+        <p class="langs">
+          <span>PT</span>
+          <span>ES</span>
+          <span>EN</span>
+          <i data-i18n="study.fluent">Fluent in Portuguese, Spanish and English.</i>
+        </p>
+      </section>
+
+      <section class="constellation" id="tech" data-section="09 — Graph" data-sec="graph">
+        <div class="constellation__copy">
+          <p class="eyebrow" data-i18n="graph.eyebrow">Graph</p>
+          <h2 class="display" data-i18n="graph.title">Everything still orbits data.</h2>
+          <p data-i18n="graph.body">
+            A living map of the tools I actually use — not a sticker sheet.
+            Move, and the field leans with you.
+          </p>
+        </div>
+        <canvas class="constellation__canvas" id="graph" aria-label="Interactive technology constellation" data-i18n-aria="graph.aria"></canvas>
+      </section>
+
+      <section class="close" id="contact" data-section="10 — Signal" data-sec="signal">
+        <p class="eyebrow" data-i18n="close.eyebrow">Next</p>
+        <h2 class="display display--xl" data-i18n="close.title">Let’s build something intelligent.</h2>
+        <p class="lede" data-i18n="close.lede">
+          A project, an idea, a stubborn dataset, a learning experience that
+          should feel like a world. Madrid, and anywhere a good problem is.
+        </p>
+        <div class="close__actions">
+          <a class="cta" href="https://www.linkedin.com/in/gustavo-de-castro-1910" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a class="cta cta--ghost" href="https://www.thelegendofsql.com/" target="_blank" rel="noreferrer" data-i18n="close.game">
+            View the game
+          </a>
+          <a class="cta cta--ghost" href="#reports" data-i18n="close.dash">
+            View dashboards
+          </a>
+        </div>
+        <p class="close__note" data-i18n="close.note">
+          Prefer email? Reach me through LinkedIn — I read it.
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>Gustavo de Castro</span>
+      <span data-i18n="foot">Turning data into experiences.</span>
+      <span>© <span id="year"></span></span>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
