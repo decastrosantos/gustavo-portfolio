@@ -106,7 +106,7 @@ export const I18N = {
       craftBody:
         "SQL · PostgreSQL · Supabase · Game design · Educational technology · Product storytelling. AI helped accelerate the build. It did not invent the idea.",
       cta: "Enter the game",
-      art: "Atmospheric view of a keep at night, inspired by the world of Datania.",
+      art: "A lone hero and a glowing spirit companion facing a vast crystalline castle across a snowy bridge, inspired by the world of Datania.",
     },
     bi: {
       eyebrow: "02 / Analytics",
@@ -274,7 +274,7 @@ export const I18N = {
       craftBody:
         "SQL · PostgreSQL · Supabase · Diseño de juego · Tecnología educativa · Relato de producto. La IA aceleró la construcción. No inventó la idea.",
       cta: "Entrar al juego",
-      art: "Vista atmosférica de una fortaleza de noche, inspirada en el mundo de Datania.",
+      art: "Un héroe solitario y un espíritu luminoso frente a un vasto castillo de cristal cruzando un puente nevado, inspirado en el mundo de Datania.",
     },
     bi: {
       eyebrow: "02 / Analítica",
@@ -442,7 +442,7 @@ export const I18N = {
       craftBody:
         "SQL · PostgreSQL · Supabase · Game design · Tecnologia educativa · Narrativa de produto. A IA acelerou a construção. Não inventou a ideia.",
       cta: "Entrar no jogo",
-      art: "Vista atmosférica de uma fortaleza à noite, inspirada no mundo de Datania.",
+      art: "Um herói solitário e um espírito luminoso diante de um vasto castelo de cristal, atravessando uma ponte nevada, inspirado no mundo de Datania.",
     },
     bi: {
       eyebrow: "02 / Analítica",
