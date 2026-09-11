@@ -84,23 +84,106 @@ function runLoader() {
   const num = document.getElementById("loaderN");
   const bar = loader?.querySelector("i");
   if (!loader || !num || !bar) return;
+  const page = document.querySelectorAll(".nav, main, .foot");
+  page.forEach((element) => {
+    element.inert = true;
+  });
+
+  const finish = () => {
+    loader.classList.add("is-done");
+    window.setTimeout(() => {
+      page.forEach((element) => {
+        element.inert = false;
+      });
+    }, reduce ? 0 : 720);
+  };
 
   if (reduce) {
-    loader.classList.add("is-done");
+    finish();
     return;
   }
 
   let t = 0;
   const id = setInterval(() => {
-    t += Math.random() * 11 + 4;
+    t += Math.random() * 7 + 3;
     if (t >= 100) t = 100;
     num.textContent = pad(Math.round(t));
     bar.style.width = `${t}%`;
     if (t === 100) {
       clearInterval(id);
-      setTimeout(() => loader.classList.add("is-done"), 220);
+      setTimeout(finish, 220);
     }
   }, 70);
+}
+
+function bindCursorLight() {
+  const light = document.getElementById("cursorLight");
+  if (!light) return;
+  const hoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let x = targetX;
+  let y = targetY;
+  let raf = 0;
+
+  const paint = () => {
+    const dx = targetX - x;
+    const dy = targetY - y;
+    x += dx * 0.18;
+    y += dy * 0.18;
+    light.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+    if (Math.abs(dx) + Math.abs(dy) < 0.2) {
+      raf = 0;
+      return;
+    }
+    raf = requestAnimationFrame(paint);
+  };
+
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      if (!hoverQuery.matches || reducedQuery.matches) return;
+      targetX = event.clientX;
+      targetY = event.clientY;
+      light.classList.add("is-visible");
+      if (!raf) raf = requestAnimationFrame(paint);
+    },
+    { passive: true },
+  );
+
+  document.addEventListener("pointerover", (event) => {
+    light.classList.toggle("is-active", Boolean(event.target.closest("a, button, [role='tab']")));
+  });
+  document.addEventListener("pointerout", (event) => {
+    if (!event.relatedTarget) {
+      light.classList.remove("is-visible", "is-active");
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
+  });
+  const disable = () => {
+    light.classList.remove("is-visible", "is-active");
+    cancelAnimationFrame(raf);
+    raf = 0;
+  };
+  window.addEventListener("blur", disable);
+  hoverQuery.addEventListener("change", ({ matches }) => {
+    if (!matches) disable();
+  });
+  reducedQuery.addEventListener("change", ({ matches }) => {
+    if (matches) disable();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    } else if (light.classList.contains("is-visible") && !raf) {
+      raf = requestAnimationFrame(paint);
+    }
+  });
 }
 
 function paintSkills(key) {
@@ -486,6 +569,7 @@ function graphCanvas() {
 }
 
 runLoader();
+bindCursorLight();
 bindExpertise();
 bindNav();
 bindPrefs();
